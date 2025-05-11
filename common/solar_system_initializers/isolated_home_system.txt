@@ -662,7 +662,7 @@ isolated_home_system_init_04_ringworld = {
 		class = "pc_relic"
 		orbit_distance = 20
 		orbit_angle = 0
-		size = 40
+		size = 60
 		has_ring = no
 
 		flags = { ignore_startup_effect }
@@ -673,24 +673,6 @@ isolated_home_system_init_04_ringworld = {
 			add_modifier = {modifier=colonial_spirit_mod}
 			set_planet_flag = starting_deposit
 		}
-	}
-	planet = {
-		name = "Hope"
-		class = "pc_relic"
-		orbit_distance = 0
-		orbit_angle = 60
-		size = 15
-		has_ring = no
-
-		flags = { ignore_startup_effect }
-		init_effect = {
-			prevent_anomaly = yes
-			add_deposit = d_federation_hegemony_monument_2
-			add_modifier = {modifier=the_memorex}
-			add_modifier = {modifier=colonial_spirit_mod}
-			set_planet_flag = starting_deposit
-		}
-		
 	}
 
 	change_orbit = 55

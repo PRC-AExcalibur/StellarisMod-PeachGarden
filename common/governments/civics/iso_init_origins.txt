@@ -1,0 +1,21 @@
+
+origin_shattered_ring_isolated = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_shattered_ring.dds"
+	picture = GFX_origin_shattered_ring
+
+	starting_colony = pc_ringworld_habitable
+	initializers = { isolated_home_system_initializer_ringworld }
+	max_once_global = yes
+
+	possible = { civics = { NOT = { value = civic_agrarian_idyll } } }
+
+	description = "origin_shattered_ring_isolated_effect"
+
+	flags = { custom_start_screen }
+
+	advanced_start = yes
+
+	random_weight = { base = 0 }
+	ai_playable = { always = no }
+}

@@ -1,0 +1,54 @@
+
+iso_init_unflaged = {
+	NOR = {
+		has_star_flag = isolated_home_system_init_style_1_flaged
+		has_star_flag = isolated_home_system_init_style_2_flaged
+		has_star_flag = isolated_home_system_init_style_3_flaged
+		has_star_flag = isolated_home_system_init_style_4_flaged
+		has_star_flag = isolated_home_system_init_style_5_flaged
+		has_star_flag = isolated_home_system_init_style_6_flaged
+		has_star_flag = isolated_home_system_init_style_7_flaged
+		has_star_flag = isolated_home_system_init_style_8_flaged
+	}
+}
+
+iso_init_same_flag_system = {
+	OR = {
+		AND = {
+			has_star_flag = isolated_home_system_init_style_1_flaged
+			root = {
+				has_country_flag = isolated_home_system_init_style_1
+			}
+		}
+		AND = {
+			has_star_flag = isolated_home_system_init_style_2_flaged
+			root = {
+				has_country_flag = isolated_home_system_init_style_2
+			}
+		}
+		AND = {
+			has_star_flag = isolated_home_system_init_style_3_flaged
+			root = {
+				has_country_flag = isolated_home_system_init_style_3
+			}
+		}
+		AND = {
+			has_star_flag = isolated_home_system_init_style_4_flaged
+			root = {
+				has_country_flag = isolated_home_system_init_style_4
+			}
+		}
+		AND = {
+			has_star_flag = isolated_home_system_init_style_5_flaged
+			root = {
+				has_country_flag = isolated_home_system_init_style_5
+			}
+		}
+		AND = {
+			has_star_flag = isolated_home_system_init_style_6_flaged
+			root = {
+				has_country_flag = isolated_home_system_init_style_6
+			}
+		}
+	}
+}

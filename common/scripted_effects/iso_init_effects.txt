@@ -1,0 +1,1628 @@
+creating_starting_system_ringworld_origin = {
+	random_list = {
+		1 = {
+			modifier = {
+				factor = 0
+				has_global_flag = isolated_cluster_style_1_spawned
+			}
+			iso_init_create_cluster_style_1 = { home_system = isolated_home_system_init_04_ringworld }
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				has_global_flag = isolated_cluster_style_2_spawned
+			}
+			iso_init_create_cluster_style_2 = { home_system = isolated_home_system_init_04_ringworld }
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				has_global_flag = isolated_cluster_style_3_spawned
+			}
+			iso_init_create_cluster_style_3 = { home_system = isolated_home_system_init_04_ringworld }
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				has_global_flag = isolated_cluster_style_4_spawned
+			}
+			iso_init_create_cluster_style_4 = { home_system = isolated_home_system_init_04_ringworld }
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				has_global_flag = isolated_cluster_style_5_spawned
+			}
+			iso_init_create_cluster_style_5 = { home_system = isolated_home_system_init_04_ringworld }
+		}
+	}
+}
+
+creating_starting_system_habitat_orgin = {
+	random_list = {
+		1 = {
+			modifier = {
+				factor = 0
+				has_global_flag = isolated_cluster_style_1_spawned
+			}
+			iso_init_create_cluster_style_1 = { home_system = isolated_home_system_init_04_habitat }
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				has_global_flag = isolated_cluster_style_2_spawned
+			}
+			iso_init_create_cluster_style_2 = { home_system = isolated_home_system_init_04_habitat }
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				has_global_flag = isolated_cluster_style_3_spawned
+			}
+			iso_init_create_cluster_style_3 = { home_system = isolated_home_system_init_04_habitat }
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				has_global_flag = isolated_cluster_style_4_spawned
+			}
+			iso_init_create_cluster_style_4 = { home_system = isolated_home_system_init_04_habitat }
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				has_global_flag = isolated_cluster_style_5_spawned
+			}
+			iso_init_create_cluster_style_5 = { home_system = isolated_home_system_init_04_habitat }
+		}
+	}
+}
+
+creating_starting_system_non_origin = {
+	random_list = {
+		1 = {
+			modifier = {
+				factor = 0
+				has_global_flag = isolated_cluster_style_1_spawned
+			}
+			iso_init_create_cluster_style_1 = { home_system = isolated_home_system_init_04 }
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				has_global_flag = isolated_cluster_style_2_spawned
+			}
+			iso_init_create_cluster_style_2 = { home_system = isolated_home_system_init_04 }
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				has_global_flag = isolated_cluster_style_3_spawned
+			}
+			iso_init_create_cluster_style_3 = { home_system = isolated_home_system_init_04 }
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				has_global_flag = isolated_cluster_style_4_spawned
+			}
+			iso_init_create_cluster_style_4 = { home_system = isolated_home_system_init_04 }
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				has_global_flag = isolated_cluster_style_5_spawned
+			}
+			iso_init_create_cluster_style_5 = { home_system = isolated_home_system_init_04 }
+		}
+	}
+}
+
+change_starting_planet_class_normal = {
+	event_target:isolated_home_system_init_04 = {
+		random_system_planet = {
+			limit = {
+				has_planet_flag = isolated_home_planet
+			}
+			save_event_target_as = new_home_planet
+			if = {
+				limit = {
+					root = {
+						NOR = {
+							has_origin = origin_shattered_ring_isolated
+						}
+					}
+				}
+				change_pc = $PLANET_CLASS$
+			}
+		}
+	}
+	if = {
+		limit = {
+			num_guaranteed_colonies >= 1
+		}
+		random_system = {
+			limit = {
+				iso_init_same_flag_system = yes
+				any_system_planet = {
+					has_planet_flag = isolated_home_colony_1
+				}
+			}
+			random_system_planet = {
+				limit = {
+					has_planet_flag = isolated_home_colony_1
+				}
+				set_planet_flag = prescripted_ideal
+				solar_system = { set_star_flag = neighbor_t1_first_colony }
+				change_pc = $PLANET_CLASS$
+				reroll_planet = yes
+			}
+		}
+	}
+	if = {
+		limit = {
+			num_guaranteed_colonies >= 2
+		}
+		random_system = {
+			limit = {
+				iso_init_same_flag_system = yes
+				any_system_planet = {
+					has_planet_flag = isolated_home_colony_2
+				}
+			}
+			random_system_planet = {
+				limit = {
+					has_planet_flag = isolated_home_colony_2
+				}
+				set_planet_flag = prescripted_ideal
+				solar_system = { set_star_flag = neighbor_t2_second_colony }
+				change_pc = $PLANET_CLASS$
+				reroll_planet = yes
+			}
+		}
+	}
+}
+
+change_starting_planet_class_special = {
+	event_target:isolated_home_system_init_04 = {
+		random_system_planet = {
+			limit = {
+				has_planet_flag = isolated_home_planet
+			}
+			save_event_target_as = new_home_planet
+			if = {
+				limit = {
+					root = {
+						NOR = {
+							has_origin = origin_shattered_ring_isolated
+						}
+					}
+				}
+				change_pc = $PLANET_CLASS$
+			}
+		}
+	}
+	if = {
+		limit = {
+			num_guaranteed_colonies >= 1
+		}
+		random_system = {
+			limit = {
+				iso_init_same_flag_system = yes
+				any_system_planet = {
+					has_planet_flag = isolated_home_colony_1
+				}
+			}
+			random_system_planet = {
+				limit = {
+					has_planet_flag = isolated_home_colony_1
+				}
+				set_planet_flag = prescripted_ideal
+				solar_system = { set_star_flag = neighbor_t1_first_colony }
+				root = {
+					owner_species = {
+						switch = {
+							trigger = has_trait
+							trait_pc_desert_preference = { prevprev = { change_pc = pc_desert } }
+							trait_pc_arid_preference = { prevprev = { change_pc = pc_arid } }
+							trait_pc_savannah_preference = { prevprev = { change_pc = pc_savannah } }
+							trait_pc_tropical_preference = { prevprev = { change_pc = pc_tropical } }
+							trait_pc_continental_preference = { prevprev = { change_pc = pc_continental } }
+							trait_pc_ocean_preference = { prevprev = { change_pc = pc_ocean } }
+							trait_pc_tundra_preference = { prevprev = { change_pc = pc_tundra } }
+							trait_pc_arctic_preference = { prevprev = { change_pc = pc_arctic } }
+							trait_pc_alpine_preference = { prevprev = { change_pc = pc_alpine } }
+							default = {
+								prevprev = {
+									random_list = {
+										10 = { change_pc = pc_desert }
+										10 = { change_pc = pc_arid }
+										10 = { change_pc = pc_savannah }
+										10 = { change_pc = pc_tropical }
+										10 = { change_pc = pc_continental }
+										10 = { change_pc = pc_ocean }
+										10 = { change_pc = pc_tundra }
+										10 = { change_pc = pc_arctic }
+										10 = { change_pc = pc_alpine }
+									}
+								}
+							}
+						}
+					}
+				}
+				reroll_planet = yes
+			}
+		}
+	}
+	if = {
+		limit = {
+			num_guaranteed_colonies >= 2
+		}
+		random_system = {
+			limit = {
+				iso_init_same_flag_system = yes
+				any_system_planet = {
+					has_planet_flag = isolated_home_colony_2
+				}
+			}
+			random_system_planet = {
+				limit = {
+					has_planet_flag = isolated_home_colony_2
+				}
+				set_planet_flag = prescripted_ideal
+				solar_system = { set_star_flag = neighbor_t2_second_colony }
+				root = {
+					owner_species = {
+						switch = {
+							trigger = has_trait
+							trait_pc_desert_preference = { prevprev = { change_pc = pc_desert } }
+							trait_pc_arid_preference = { prevprev = { change_pc = pc_arid } }
+							trait_pc_savannah_preference = { prevprev = { change_pc = pc_savannah } }
+							trait_pc_tropical_preference = { prevprev = { change_pc = pc_tropical } }
+							trait_pc_continental_preference = { prevprev = { change_pc = pc_continental } }
+							trait_pc_ocean_preference = { prevprev = { change_pc = pc_ocean } }
+							trait_pc_tundra_preference = { prevprev = { change_pc = pc_tundra } }
+							trait_pc_arctic_preference = { prevprev = { change_pc = pc_arctic } }
+							trait_pc_alpine_preference = { prevprev = { change_pc = pc_alpine } }
+							default = {
+								prevprev = {
+									random_list = {
+										10 = { change_pc = pc_desert }
+										10 = { change_pc = pc_arid }
+										10 = { change_pc = pc_savannah }
+										10 = { change_pc = pc_tropical }
+										10 = { change_pc = pc_continental }
+										10 = { change_pc = pc_ocean }
+										10 = { change_pc = pc_tundra }
+										10 = { change_pc = pc_arctic }
+										10 = { change_pc = pc_alpine }
+									}
+								}
+							}
+						}
+					}
+				}
+				reroll_planet = yes
+			}
+		}
+	}
+}
+
+iso_init_create_cluster_style_1 = {
+	set_global_flag = isolated_cluster_style_1_spawned
+	set_global_flag = isolated_cluster_style_2_spawned
+	set_star_flag = isolated_home_system_init_style_1_flaged
+	set_spawn_system_batch = begin
+	no_scope = {
+		spawn_system = {
+			min_distance >= 550
+			max_distance <= 560
+			min_orientation_angle = 138
+			max_orientation_angle = 144
+			initializer = isolated_home_system_init_01
+			hyperlane = no
+		}
+		random_system = {
+			limit = {
+				has_star_flag = isolated_home_flag_system
+				iso_init_unflaged = yes
+			}
+			spawn_system = {
+				min_distance >= 20
+				max_distance <= 25
+				min_orientation_angle = 128
+				max_orientation_angle = 144
+				initializer = isolated_home_system_init_02
+				hyperlane = no
+			}
+			spawn_system = {
+				min_distance >= 25
+				max_distance <= 30
+				min_orientation_angle = 10
+				max_orientation_angle = 30
+				initializer = isolated_home_system_init_03
+				hyperlane = no
+			}
+		}
+		random_system = {
+			limit = {
+				has_star_flag = isolated_home_system_init_02
+				iso_init_unflaged = yes
+			}
+			spawn_system = {
+				min_distance >= 25
+				max_distance <= 35
+				min_orientation_angle = 45
+				max_orientation_angle = 55
+				initializer = isolated_home_system_init_06
+				hyperlane = no
+			}
+		}
+		random_system = {
+			limit = {
+				has_star_flag = isolated_home_system_init_03
+				iso_init_unflaged = yes
+			}
+			spawn_system = {
+				min_distance >= 20
+				max_distance <= 25
+				min_orientation_angle = 110
+				max_orientation_angle = 130
+				initializer = isolated_home_system_init_05
+				hyperlane = no
+			}
+		}
+		random_system = {
+			limit = {
+				has_star_flag = isolated_home_system_init_05
+				iso_init_unflaged = yes
+			}
+			spawn_system = {
+				min_distance >= 32
+				max_distance <= 38
+				min_orientation_angle = 25
+				max_orientation_angle = 40
+				initializer = $home_system$
+				hyperlane = no
+			}
+		}
+		random_system = {
+			limit = {
+				has_star_flag = isolated_home_system_init_06
+				iso_init_unflaged = yes
+			}
+			spawn_system = {
+				min_distance >= 20
+				max_distance <= 25
+				min_orientation_angle = 10
+				max_orientation_angle = 25
+				initializer = isolated_home_system_init_07
+				hyperlane = no
+			}
+		}
+		random_system = {
+			limit = {
+				has_star_flag = isolated_home_system_init_07
+				iso_init_unflaged = yes
+			}
+			spawn_system = {
+				min_distance >= 10
+				max_distance <= 15
+				initializer = isolated_home_system_init_08
+				hyperlane = no
+			}
+		}
+		random_system = {
+			limit = {
+				has_star_flag = isolated_home_system_init_08
+				iso_init_unflaged = yes
+			}
+			spawn_system = {
+				min_distance >= 10
+				max_distance <= 15
+				initializer = isolated_home_system_init_09
+				hyperlane = no
+			}
+		}
+	}
+	every_system = {
+		limit = {
+			has_star_flag = isolated_home_system
+			iso_init_unflaged = yes
+		}
+		isolate_system = yes
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_01
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_1_flaged
+		save_event_target_as = isolated_home_system_init_01
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_02
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_1_flaged
+		save_event_target_as = isolated_home_system_init_02
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_03
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_1_flaged
+		save_event_target_as = isolated_home_system_init_03
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_04
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_1_flaged
+		save_event_target_as = isolated_home_system_init_04
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_05
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_1_flaged
+		save_event_target_as = isolated_home_system_init_05
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_06
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_1_flaged
+		save_event_target_as = isolated_home_system_init_06
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_07
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_1_flaged
+		save_event_target_as = isolated_home_system_init_07
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_08
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_1_flaged
+		save_event_target_as = isolated_home_system_init_08
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_09
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_1_flaged
+		save_event_target_as = isolated_home_system_init_09
+	}
+
+	event_target:isolated_home_system_init_01 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_01
+			to = event_target:isolated_home_system_init_02
+		}
+	}
+	event_target:isolated_home_system_init_02 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_02
+			to = event_target:isolated_home_system_init_03
+		}
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_02
+			to = event_target:isolated_home_system_init_05
+		}
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_02
+			to = event_target:isolated_home_system_init_06
+		}
+	}
+	event_target:isolated_home_system_init_03 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_03
+			to = event_target:isolated_home_system_init_05
+		}
+	}
+	event_target:isolated_home_system_init_05 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_05
+			to = event_target:isolated_home_system_init_04
+		}
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_05
+			to = event_target:isolated_home_system_init_06
+		}
+	}
+	event_target:isolated_home_system_init_07 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_07
+			to = event_target:isolated_home_system_init_04
+		}
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_07
+			to = event_target:isolated_home_system_init_06
+		}
+	}
+	event_target:isolated_home_system_init_08 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_08
+			to = event_target:isolated_home_system_init_07
+		}
+	}
+	event_target:isolated_home_system_init_09 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_09
+			to = event_target:isolated_home_system_init_08
+		}
+	}
+	set_spawn_system_batch = end
+}
+iso_init_create_cluster_style_2 = {
+	set_global_flag = isolated_cluster_style_1_spawned
+	set_global_flag = isolated_cluster_style_2_spawned
+	set_star_flag = isolated_home_system_init_style_2_flaged
+	set_spawn_system_batch = begin
+	no_scope = {
+		spawn_system = {
+			min_distance >= 550
+			max_distance <= 560
+			min_orientation_angle = 138
+			max_orientation_angle = 144
+			initializer = isolated_home_system_init_01
+			hyperlane = no
+		}
+		random_system = {
+			limit = {
+				has_star_flag = isolated_home_flag_system
+				iso_init_unflaged = yes
+			}
+			spawn_system = {
+				min_distance >= 20
+				max_distance <= 25
+				min_orientation_angle = 107
+				max_orientation_angle = 124
+				initializer = isolated_home_system_init_02
+				hyperlane = no
+			}
+			spawn_system = {
+				min_distance >= 25
+				max_distance <= 30
+				min_orientation_angle = 192
+				max_orientation_angle = 210
+				initializer = isolated_home_system_init_06
+				hyperlane = no
+			}
+			spawn_system = {
+				min_distance >= 20
+				max_distance <= 25
+				min_orientation_angle = 255
+				max_orientation_angle = 262
+				initializer = isolated_home_system_init_03
+				hyperlane = no
+			}
+		}
+		random_system = {
+			limit = {
+				has_star_flag = isolated_home_system_init_02
+				iso_init_unflaged = yes
+			}
+			spawn_system = {
+				min_distance >= 20
+				max_distance <= 25
+				min_orientation_angle = 200
+				max_orientation_angle = 220
+				initializer = isolated_home_system_init_07
+				hyperlane = no
+			}
+		}
+		random_system = {
+			limit = {
+				has_star_flag = isolated_home_system_init_06
+				iso_init_unflaged = yes
+			}
+			spawn_system = {
+				min_distance >= 32
+				max_distance <= 38
+				min_orientation_angle = 175
+				max_orientation_angle = 185
+				initializer = $home_system$
+				hyperlane = no
+			}
+			spawn_system = {
+				min_distance >= 25
+				max_distance <= 35
+				min_orientation_angle = 225
+				max_orientation_angle = 244
+				initializer = isolated_home_system_init_05
+				hyperlane = no
+			}
+		}
+		random_system = {
+			limit = {
+				has_star_flag = isolated_home_system_init_07
+				iso_init_unflaged = yes
+			}
+			spawn_system = {
+				min_distance >= 10
+				max_distance <= 15
+				initializer = isolated_home_system_init_08
+				hyperlane = no
+			}
+		}
+		random_system = {
+			limit = {
+				has_star_flag = isolated_home_system_init_08
+				iso_init_unflaged = yes
+			}
+			spawn_system = {
+				min_distance >= 10
+				max_distance <= 15
+				initializer = isolated_home_system_init_09
+				hyperlane = no
+			}
+		}
+	}
+	every_system = {
+		limit = {
+			has_star_flag = isolated_home_system
+			iso_init_unflaged = yes
+		}
+		isolate_system = yes
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_01
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_2_flaged
+		save_event_target_as = isolated_home_system_init_01
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_02
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_2_flaged
+		save_event_target_as = isolated_home_system_init_02
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_03
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_2_flaged
+		save_event_target_as = isolated_home_system_init_03
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_04
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_2_flaged
+		save_event_target_as = isolated_home_system_init_04
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_05
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_2_flaged
+		save_event_target_as = isolated_home_system_init_05
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_06
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_2_flaged
+		save_event_target_as = isolated_home_system_init_06
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_07
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_2_flaged
+		save_event_target_as = isolated_home_system_init_07
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_08
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_2_flaged
+		save_event_target_as = isolated_home_system_init_08
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_09
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_2_flaged
+		save_event_target_as = isolated_home_system_init_09
+	}
+	
+	event_target:isolated_home_system_init_01 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_01
+			to = event_target:isolated_home_system_init_02
+		}
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_01
+			to = event_target:isolated_home_system_init_03
+		}
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_01
+			to = event_target:isolated_home_system_init_06
+		}
+	}
+	event_target:isolated_home_system_init_02 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_02
+			to = event_target:isolated_home_system_init_07
+		}
+	}
+	event_target:isolated_home_system_init_03 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_03
+			to = event_target:isolated_home_system_init_05
+		}
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_03
+			to = event_target:isolated_home_system_init_06
+		}
+	}
+	event_target:isolated_home_system_init_05 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_05
+			to = event_target:isolated_home_system_init_04
+		}
+	}
+	event_target:isolated_home_system_init_06 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_06
+			to = event_target:isolated_home_system_init_05
+		}
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_06
+			to = event_target:isolated_home_system_init_07
+		}
+	}
+	event_target:isolated_home_system_init_07 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_07
+			to = event_target:isolated_home_system_init_04
+		}
+	}
+	event_target:isolated_home_system_init_08 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_08
+			to = event_target:isolated_home_system_init_07
+		}
+	}
+	event_target:isolated_home_system_init_09 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_09
+			to = event_target:isolated_home_system_init_08
+		}
+	}
+	set_spawn_system_batch = end
+}
+iso_init_create_cluster_style_3 = {
+	set_global_flag = isolated_cluster_style_3_spawned
+	set_star_flag = isolated_home_system_init_style_3_flaged
+	set_spawn_system_batch = begin
+	no_scope = {
+		spawn_system = {
+			min_distance >= 550
+			max_distance <= 560
+			min_orientation_angle = 215
+			max_orientation_angle = 233
+			initializer = isolated_home_system_init_01
+			hyperlane = no
+		}
+		random_system = {
+			limit = {
+				has_star_flag = isolated_home_flag_system
+				iso_init_unflaged = yes
+			}
+			spawn_system = {
+				min_distance >= 20
+				max_distance <= 25
+				min_orientation_angle = 215
+				max_orientation_angle = 233
+				initializer = isolated_home_system_init_02
+				hyperlane = no
+			}
+			spawn_system = {
+				min_distance >= 25
+				max_distance <= 30
+				min_orientation_angle = 310
+				max_orientation_angle = 330
+				initializer = isolated_home_system_init_03
+				hyperlane = no
+			}
+		}
+		random_system = {
+			limit = {
+				has_star_flag = isolated_home_system_init_03
+				iso_init_unflaged = yes
+			}
+			spawn_system = {
+				min_distance >= 30
+				max_distance <= 35
+				min_orientation_angle = 205
+				max_orientation_angle = 225
+				initializer = isolated_home_system_init_05
+				hyperlane = no
+			}
+			spawn_system = {
+				min_distance >= 20
+				max_distance <= 25
+				min_orientation_angle = 325
+				max_orientation_angle = 340
+				initializer = isolated_home_system_init_06
+				hyperlane = no
+			}
+		}
+		random_system = {
+			limit = {
+				has_star_flag = isolated_home_system_init_05
+				iso_init_unflaged = yes
+			}
+			spawn_system = {
+				min_distance >= 32
+				max_distance <= 38
+				min_orientation_angle = 275
+				max_orientation_angle = 290
+				initializer = $home_system$
+				hyperlane = no
+			}
+		}
+		random_system = {
+			limit = {
+				has_star_flag = isolated_home_system_init_06
+				iso_init_unflaged = yes
+			}
+			spawn_system = {
+				min_distance >= 25
+				max_distance <= 35
+				min_orientation_angle = 265
+				max_orientation_angle = 278
+				initializer = isolated_home_system_init_07
+				hyperlane = no
+			}
+		}
+		random_system = {
+			limit = {
+				has_star_flag = isolated_home_system_init_07
+				iso_init_unflaged = yes
+			}
+			spawn_system = {
+				min_distance >= 10
+				max_distance <= 15
+				initializer = isolated_home_system_init_08
+				hyperlane = no
+			}
+		}
+		random_system = {
+			limit = {
+				has_star_flag = isolated_home_system_init_08
+				iso_init_unflaged = yes
+			}
+			spawn_system = {
+				min_distance >= 10
+				max_distance <= 15
+				initializer = isolated_home_system_init_09
+				hyperlane = no
+			}
+		}
+	}
+	every_system = {
+		limit = {
+			has_star_flag = isolated_home_system
+			iso_init_unflaged = yes
+		}
+		isolate_system = yes
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_01
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_3_flaged
+		save_event_target_as = isolated_home_system_init_01
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_02
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_3_flaged
+		save_event_target_as = isolated_home_system_init_02
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_03
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_3_flaged
+		save_event_target_as = isolated_home_system_init_03
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_04
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_3_flaged
+		save_event_target_as = isolated_home_system_init_04
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_05
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_3_flaged
+		save_event_target_as = isolated_home_system_init_05
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_06
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_3_flaged
+		save_event_target_as = isolated_home_system_init_06
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_07
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_3_flaged
+		save_event_target_as = isolated_home_system_init_07
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_08
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_3_flaged
+		save_event_target_as = isolated_home_system_init_08
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_09
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_3_flaged
+		save_event_target_as = isolated_home_system_init_09
+	}
+
+	event_target:isolated_home_system_init_01 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_01
+			to = event_target:isolated_home_system_init_02
+		}
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_01
+			to = event_target:isolated_home_system_init_03
+		}
+	}
+	event_target:isolated_home_system_init_02 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_02
+			to = event_target:isolated_home_system_init_03
+		}
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_02
+			to = event_target:isolated_home_system_init_05
+		}
+	}
+	event_target:isolated_home_system_init_03 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_03
+			to = event_target:isolated_home_system_init_05
+		}
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_03
+			to = event_target:isolated_home_system_init_06
+		}
+	}
+	event_target:isolated_home_system_init_05 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_05
+			to = event_target:isolated_home_system_init_04
+		}
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_05
+			to = event_target:isolated_home_system_init_07
+		}
+	}
+	event_target:isolated_home_system_init_07 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_07
+			to = event_target:isolated_home_system_init_04
+		}
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_07
+			to = event_target:isolated_home_system_init_06
+		}
+	}
+	event_target:isolated_home_system_init_08 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_08
+			to = event_target:isolated_home_system_init_07
+		}
+	}
+	event_target:isolated_home_system_init_09 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_09
+			to = event_target:isolated_home_system_init_08
+		}
+	}
+	set_spawn_system_batch = end
+}
+iso_init_create_cluster_style_4 = {
+	set_global_flag = isolated_cluster_style_4_spawned
+	set_global_flag = isolated_cluster_style_5_spawned
+	set_star_flag = isolated_home_system_init_style_4_flaged
+	set_spawn_system_batch = begin
+	no_scope = {
+		spawn_system = {
+			min_distance >= 550
+			max_distance <= 560
+			min_orientation_angle = 311
+			max_orientation_angle = 324
+			initializer = isolated_home_system_init_01
+			hyperlane = no
+		}
+		random_system = {
+			limit = {
+				has_star_flag = isolated_home_flag_system
+				iso_init_unflaged = yes
+			}
+			spawn_system = {
+				min_distance >= 20
+				max_distance <= 25
+				min_orientation_angle = 208
+				max_orientation_angle = 220
+				initializer = isolated_home_system_init_02
+				hyperlane = no
+			}
+			spawn_system = {
+				min_distance >= 25
+				max_distance <= 30
+				min_orientation_angle = 310
+				max_orientation_angle = 335
+				initializer = isolated_home_system_init_03
+				hyperlane = no
+			}
+		}
+		random_system = {
+			limit = {
+				has_star_flag = isolated_home_system_init_02
+				iso_init_unflaged = yes
+			}
+			spawn_system = {
+				min_distance >= 30
+				max_distance <= 35
+				min_orientation_angle = 190
+				max_orientation_angle = 210
+				initializer = isolated_home_system_init_05
+				hyperlane = no
+			}
+			spawn_system = {
+				min_distance >= 20
+				max_distance <= 25
+				min_orientation_angle = 288
+				max_orientation_angle = 310
+				initializer = isolated_home_system_init_07
+				hyperlane = no
+			}
+		}
+		random_system = {
+			limit = {
+				has_star_flag = isolated_home_system_init_03
+				iso_init_unflaged = yes
+			}
+			spawn_system = {
+				min_distance >= 25
+				max_distance <= 35
+				min_orientation_angle = 325
+				max_orientation_angle = 340
+				initializer = isolated_home_system_init_06
+				hyperlane = no
+			}
+		}
+		random_system = {
+			limit = {
+				has_star_flag = isolated_home_system_init_05
+				iso_init_unflaged = yes
+			}
+			spawn_system = {
+				min_distance >= 25
+				max_distance <= 32
+				min_orientation_angle = 260
+				max_orientation_angle = 270
+				initializer = $home_system$
+				hyperlane = no
+			}
+		}
+		random_system = {
+			limit = {
+				has_star_flag = isolated_home_system_init_07
+				iso_init_unflaged = yes
+			}
+			spawn_system = {
+				min_distance >= 10
+				max_distance <= 15
+				initializer = isolated_home_system_init_08
+				hyperlane = no
+			}
+		}
+		random_system = {
+			limit = {
+				has_star_flag = isolated_home_system_init_08
+				iso_init_unflaged = yes
+			}
+			spawn_system = {
+				min_distance >= 10
+				max_distance <= 15
+				initializer = isolated_home_system_init_09
+				hyperlane = no
+			}
+		}
+	}
+	every_system = {
+		limit = {
+			has_star_flag = isolated_home_system
+			iso_init_unflaged = yes
+		}
+		isolate_system = yes
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_01
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_4_flaged
+		save_event_target_as = isolated_home_system_init_01
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_02
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_4_flaged
+		save_event_target_as = isolated_home_system_init_02
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_03
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_4_flaged
+		save_event_target_as = isolated_home_system_init_03
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_04
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_4_flaged
+		save_event_target_as = isolated_home_system_init_04
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_05
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_4_flaged
+		save_event_target_as = isolated_home_system_init_05
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_06
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_4_flaged
+		save_event_target_as = isolated_home_system_init_06
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_07
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_4_flaged
+		save_event_target_as = isolated_home_system_init_07
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_08
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_4_flaged
+		save_event_target_as = isolated_home_system_init_08
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_09
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_4_flaged
+		save_event_target_as = isolated_home_system_init_09
+	}
+
+	event_target:isolated_home_system_init_01 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_01
+			to = event_target:isolated_home_system_init_02
+		}
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_01
+			to = event_target:isolated_home_system_init_03
+		}
+	}
+	event_target:isolated_home_system_init_02 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_02
+			to = event_target:isolated_home_system_init_05
+		}
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_02
+			to = event_target:isolated_home_system_init_07
+		}
+	}
+	event_target:isolated_home_system_init_03 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_03
+			to = event_target:isolated_home_system_init_06
+		}
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_03
+			to = event_target:isolated_home_system_init_07
+		}
+	}
+	event_target:isolated_home_system_init_05 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_05
+			to = event_target:isolated_home_system_init_04
+		}
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_05
+			to = event_target:isolated_home_system_init_07
+		}
+	}
+	event_target:isolated_home_system_init_07 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_07
+			to = event_target:isolated_home_system_init_04
+		}
+	}
+	event_target:isolated_home_system_init_08 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_08
+			to = event_target:isolated_home_system_init_07
+		}
+	}
+	event_target:isolated_home_system_init_09 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_09
+			to = event_target:isolated_home_system_init_08
+		}
+	}
+	set_spawn_system_batch = end
+}
+iso_init_create_cluster_style_5 = {
+	set_global_flag = isolated_cluster_style_4_spawned
+	set_global_flag = isolated_cluster_style_5_spawned
+	set_star_flag = isolated_home_system_init_style_5_flaged
+	set_spawn_system_batch = begin
+	no_scope = {
+		spawn_system = {
+			min_distance >= 550
+			max_distance <= 560
+			min_orientation_angle = 311
+			max_orientation_angle = 324
+			initializer = isolated_home_system_init_01
+			hyperlane = no
+		}
+		random_system = {
+			limit = {
+				has_star_flag = isolated_home_flag_system
+				iso_init_unflaged = yes
+			}
+			spawn_system = {
+				min_distance >= 25
+				max_distance <= 30
+				min_orientation_angle = 298
+				max_orientation_angle = 316
+				initializer = isolated_home_system_init_02
+				hyperlane = no
+			}
+			spawn_system = {
+				min_distance >= 25
+				max_distance <= 30
+				min_orientation_angle = 10
+				max_orientation_angle = 35
+				initializer = isolated_home_system_init_03
+				hyperlane = no
+			}
+		}
+		random_system = {
+			limit = {
+				has_star_flag = isolated_home_system_init_02
+				iso_init_unflaged = yes
+			}
+			spawn_system = {
+				min_distance >= 20
+				max_distance <= 25
+				min_orientation_angle = 7
+				max_orientation_angle = 21
+				initializer = isolated_home_system_init_06
+				hyperlane = no
+			}
+		}
+		random_system = {
+			limit = {
+				has_star_flag = isolated_home_system_init_03
+				iso_init_unflaged = yes
+			}
+			spawn_system = {
+				min_distance >= 25
+				max_distance <= 35
+				min_orientation_angle = 72
+				max_orientation_angle = 88
+				initializer = isolated_home_system_init_05
+				hyperlane = no
+			}
+		}
+		random_system = {
+			limit = {
+				has_star_flag = isolated_home_system_init_05
+				iso_init_unflaged = yes
+			}
+			spawn_system = {
+				min_distance >= 20
+				max_distance <= 30
+				min_orientation_angle = 340
+				max_orientation_angle = 355
+				initializer = $home_system$
+				hyperlane = no
+			}
+		}
+		random_system = {
+			limit = {
+				has_star_flag = isolated_home_system_init_06
+				iso_init_unflaged = yes
+			}
+			spawn_system = {
+				min_distance >= 30
+				max_distance <= 35
+				min_orientation_angle = 30
+				max_orientation_angle = 52
+				initializer = isolated_home_system_init_07
+				hyperlane = no
+			}
+		}
+		random_system = {
+			limit = {
+				has_star_flag = isolated_home_system_init_07
+				iso_init_unflaged = yes
+			}
+			spawn_system = {
+				min_distance >= 10
+				max_distance <= 15
+				initializer = isolated_home_system_init_08
+				hyperlane = no
+			}
+		}
+		random_system = {
+			limit = {
+				has_star_flag = isolated_home_system_init_08
+				iso_init_unflaged = yes
+			}
+			spawn_system = {
+				min_distance >= 10
+				max_distance <= 15
+				initializer = isolated_home_system_init_09
+				hyperlane = no
+			}
+		}
+	}
+	every_system = {
+		limit = {
+			has_star_flag = isolated_home_system
+			iso_init_unflaged = yes
+		}
+		isolate_system = yes
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_01
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_5_flaged
+		save_event_target_as = isolated_home_system_init_01
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_02
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_5_flaged
+		save_event_target_as = isolated_home_system_init_02
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_03
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_5_flaged
+		save_event_target_as = isolated_home_system_init_03
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_04
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_5_flaged
+		save_event_target_as = isolated_home_system_init_04
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_05
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_5_flaged
+		save_event_target_as = isolated_home_system_init_05
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_06
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_5_flaged
+		save_event_target_as = isolated_home_system_init_06
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_07
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_5_flaged
+		save_event_target_as = isolated_home_system_init_07
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_08
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_5_flaged
+		save_event_target_as = isolated_home_system_init_08
+	}
+	random_system = {
+		limit = {
+			has_star_flag = isolated_home_system_init_09
+			iso_init_unflaged = yes
+		}
+		set_star_flag = isolated_home_system_init_style_5_flaged
+		save_event_target_as = isolated_home_system_init_09
+	}
+
+	event_target:isolated_home_system_init_01 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_01
+			to = event_target:isolated_home_system_init_02
+		}
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_01
+			to = event_target:isolated_home_system_init_03
+		}
+	}
+	event_target:isolated_home_system_init_02 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_02
+			to = event_target:isolated_home_system_init_03
+		}
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_02
+			to = event_target:isolated_home_system_init_06
+		}
+	}
+	event_target:isolated_home_system_init_03 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_03
+			to = event_target:isolated_home_system_init_05
+		}
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_03
+			to = event_target:isolated_home_system_init_06
+		}
+	}
+	event_target:isolated_home_system_init_05 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_05
+			to = event_target:isolated_home_system_init_04
+		}
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_05
+			to = event_target:isolated_home_system_init_06
+		}
+	}
+	event_target:isolated_home_system_init_07 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_07
+			to = event_target:isolated_home_system_init_04
+		}
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_07
+			to = event_target:isolated_home_system_init_06
+		}
+	}
+	event_target:isolated_home_system_init_08 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_08
+			to = event_target:isolated_home_system_init_07
+		}
+	}
+	event_target:isolated_home_system_init_09 = {
+		add_hyperlane = {
+			from = event_target:isolated_home_system_init_09
+			to = event_target:isolated_home_system_init_08
+		}
+	}
+	set_spawn_system_batch = end
+}
+
+
+iso_compatibility_effect = {
+	if = {
+		limit = {
+			has_global_flag = distar_overhaul_mod_active
+			OR = {
+				has_origin = civic_harvester_nanites
+				has_origin = civic_gateway_pursuer
+				has_origin = civic_gateway_worshiper
+			}
+		}
+		country_event = { id = bio_harvest.3 }
+		every_system = {
+			limit = {
+				has_star_flag = isolated_home_system_gate
+			}
+			if = {
+				limit = {
+					has_star_flag = lgate
+				}
+				remove_star_flag = lgate
+				random_system_megastructure = {
+					limit = {
+						is_megastructure_type = lgate_base
+					}
+					remove_megastructure = this
+				}
+			}
+			every_system_planet = {
+				limit = {
+					OR = {
+						is_planet_class = pc_shattered
+						is_planet_class = pc_gray_goo
+					}
+				}
+				remove_planet = yes
+			}
+			every_system_ambient_object = {
+				destroy_ambient_object = this
+			}
+		}
+	}
+}

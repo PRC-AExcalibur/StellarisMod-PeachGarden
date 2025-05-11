@@ -1,0 +1,1218 @@
+namespace = iso_init
+
+
+#Triggered on game start, for common start.
+country_event = {
+	id = iso_init.11
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		NOR = {
+			has_origin = origin_shattered_ring_isolated
+		}
+		any_system_within_border = { has_star_flag = isolated_home_system_gate }
+	}
+	
+	immediate = {
+		random_system = {
+			limit = { has_star_flag = isolated_home_system_gate }
+			creating_starting_system_non_origin = yes
+		}
+		set_country_flag = isolated_starting_country
+		random_owned_planet = {
+			save_event_target_as = previous_home_planet
+			solar_system = {
+				save_event_target_as = previous_home_system
+				switch = {
+					trigger = has_star_flag
+					isolated_home_system_init_style_1_flaged = { root = { set_country_flag = isolated_home_system_init_style_1 } }
+					isolated_home_system_init_style_2_flaged = { root = { set_country_flag = isolated_home_system_init_style_2 } }
+					isolated_home_system_init_style_3_flaged = { root = { set_country_flag = isolated_home_system_init_style_3 } }
+					isolated_home_system_init_style_4_flaged = { root = { set_country_flag = isolated_home_system_init_style_4 } }
+					isolated_home_system_init_style_5_flaged = { root = { set_country_flag = isolated_home_system_init_style_5 } }
+					isolated_home_system_init_style_6_flaged = { root = { set_country_flag = isolated_home_system_init_style_6 } }
+				}
+			}
+		}
+		random_system = {
+			limit = {
+				iso_init_same_flag_system = yes
+				any_system_planet = {
+					has_planet_flag = first_colony_candidate
+				}
+			}
+			random_system_planet = {
+				limit = {
+					has_planet_flag = first_colony_candidate
+				}
+				remove_planet_flag = first_colony_candidate
+				set_planet_flag = isolated_home_colony_1
+			}
+		}
+		random_system = {
+			limit = {
+				iso_init_same_flag_system = yes
+				any_system_planet = {
+					has_planet_flag = second_colony_candidate
+				}
+			}
+			random_system_planet = {
+				limit = {
+					has_planet_flag = second_colony_candidate
+				}
+				remove_planet_flag = second_colony_candidate
+				set_planet_flag = isolated_home_colony_2
+			}
+		}
+		random_system = {
+			limit = {
+				iso_init_same_flag_system = yes
+				any_system_planet = {
+					has_planet_flag = first_colony_candidate
+				}
+			}
+			random_system_planet = {
+				limit = {
+					has_planet_flag = first_colony_candidate
+				}
+				remove_planet_flag = first_colony_candidate
+				random_list = {
+					50 = {
+						change_pc = pc_barren
+					}
+					50 = {
+						change_pc = pc_barren_cold
+					}
+				}
+				add_modifier = {
+					modifier = "terraforming_candidate"
+					days = -1
+				}
+			}
+		}
+		random_system = {
+			limit = {
+				iso_init_same_flag_system = yes
+				any_system_planet = {
+					has_planet_flag = second_colony_candidate
+				}
+			}
+			random_system_planet = {
+				limit = {
+					has_planet_flag = second_colony_candidate
+				}
+				remove_planet_flag = second_colony_candidate
+				random_list = {
+					50 = {
+						change_pc = pc_barren
+					}
+					50 = {
+						change_pc = pc_barren_cold
+					}
+				}
+				add_modifier = {
+					modifier = "terraforming_candidate"
+					days = -1
+				}
+			}
+		}
+		random_system = {
+			limit = {
+				iso_init_same_flag_system = yes
+				has_star_flag = isolated_home_system_init_01
+			}
+			save_event_target_as = isolated_home_system_init_01
+		}
+		random_system = {
+			limit = {
+				iso_init_same_flag_system = yes
+				has_star_flag = isolated_home_system_init_02
+			}
+			save_event_target_as = isolated_home_system_init_02
+		}
+		random_system = {
+			limit = {
+				iso_init_same_flag_system = yes
+				has_star_flag = isolated_home_system_init_03
+			}
+			save_event_target_as = isolated_home_system_init_03
+		}
+		random_system = {
+			limit = {
+				iso_init_same_flag_system = yes
+				has_star_flag = isolated_home_system_init_04
+			}
+			save_event_target_as = isolated_home_system_init_04
+		}
+		random_system = {
+			limit = {
+				iso_init_same_flag_system = yes
+				has_star_flag = isolated_home_system_init_05
+			}
+			save_event_target_as = isolated_home_system_init_05
+		}
+		random_system = {
+			limit = {
+				iso_init_same_flag_system = yes
+				has_star_flag = isolated_home_system_init_06
+			}
+			save_event_target_as = isolated_home_system_init_06
+		}
+		random_system = {
+			limit = {
+				iso_init_same_flag_system = yes
+				has_star_flag = isolated_home_system_init_07
+			}
+			save_event_target_as = isolated_home_system_init_07
+		}
+		random_system = {
+			limit = {
+				iso_init_same_flag_system = yes
+				has_star_flag = isolated_home_system_init_08
+			}
+			save_event_target_as = isolated_home_system_init_08
+		}
+		random_system = {
+			limit = {
+				iso_init_same_flag_system = yes
+				has_star_flag = isolated_home_system_init_09
+			}
+			save_event_target_as = isolated_home_system_init_09
+		}
+		event_target:previous_home_planet = {
+			solar_system = {
+				remove_star_flag = empire_home_system
+				set_star_flag = empire_cluster
+			}
+		}
+		event_target:previous_home_planet = {
+			switch = {
+				trigger = is_planet_class
+				
+				#You could add more planets here.
+				#"change_starting_planet_class_normal" will create guaranteed colonies base on planet class of your homeworld.
+				#"change_starting_planet_class_special" will create guaranteed colonies base on 9 common species preference or random planet class.
+				#<planet class> = { change_starting_planet_class_normal = { PLANET_CLASS = <planet class> } }
+				#<planet class> = { change_starting_planet_class_special = { PLANET_CLASS = <planet class> } }
+				pc_desert = { change_starting_planet_class_normal = { PLANET_CLASS = pc_desert } }
+				pc_arid = { change_starting_planet_class_normal = { PLANET_CLASS = pc_arid } }
+				pc_savannah = { change_starting_planet_class_normal = { PLANET_CLASS = pc_savannah } }
+				pc_ocean = { change_starting_planet_class_normal = { PLANET_CLASS = pc_ocean } }
+				pc_continental = { change_starting_planet_class_normal = { PLANET_CLASS = pc_continental } }
+				pc_tropical = { change_starting_planet_class_normal = { PLANET_CLASS = pc_tropical } }
+				pc_tundra = { change_starting_planet_class_normal = { PLANET_CLASS = pc_tundra } }
+				pc_arctic = { change_starting_planet_class_normal = { PLANET_CLASS = pc_arctic } }
+				pc_alpine = { change_starting_planet_class_normal = { PLANET_CLASS = pc_alpine } }
+				
+				pc_nuked = { change_starting_planet_class_special = { PLANET_CLASS = pc_nuked } }
+				pc_gaia = { change_starting_planet_class_special = { PLANET_CLASS = pc_gaia } }
+				pc_relic = { change_starting_planet_class_special = { PLANET_CLASS = pc_relic } }
+				pc_machine = { change_starting_planet_class_special = { PLANET_CLASS = pc_machine } }
+				
+				#Compatible with Planetary Diversity.
+				pc_aquatic = { change_starting_planet_class_normal = { PLANET_CLASS = pc_aquatic } }
+				pc_prairie = { change_starting_planet_class_normal = { PLANET_CLASS = pc_prairie } }
+				pc_antarctic = { change_starting_planet_class_normal = { PLANET_CLASS = pc_antarctic } }
+				pc_snow = { change_starting_planet_class_normal = { PLANET_CLASS = pc_snow } }
+				pc_glacial = { change_starting_planet_class_normal = { PLANET_CLASS = pc_glacial } }
+				pc_frozen_desert = { change_starting_planet_class_normal = { PLANET_CLASS = pc_frozen_desert } }
+				pc_steppe = { change_starting_planet_class_normal = { PLANET_CLASS = pc_steppe } }
+				pc_hadesert = { change_starting_planet_class_normal = { PLANET_CLASS = pc_hadesert } }
+				pc_boreal = { change_starting_planet_class_normal = { PLANET_CLASS = pc_boreal } }
+				pc_sandsea = { change_starting_planet_class_normal = { PLANET_CLASS = pc_sandsea } }
+				pc_subarctic = { change_starting_planet_class_normal = { PLANET_CLASS = pc_subarctic } }
+				pc_cascadian = { change_starting_planet_class_normal = { PLANET_CLASS = pc_cascadian } }
+				pc_swamp = { change_starting_planet_class_normal = { PLANET_CLASS = pc_swamp } }
+				pc_mangrove = { change_starting_planet_class_normal = { PLANET_CLASS = pc_mangrove } }
+				pc_desertislands = { change_starting_planet_class_normal = { PLANET_CLASS = pc_desertislands } }
+				pc_mesa = { change_starting_planet_class_normal = { PLANET_CLASS = pc_mesa } }
+				pc_oasis = { change_starting_planet_class_normal = { PLANET_CLASS = pc_oasis } }
+				pc_hajungle = { change_starting_planet_class_normal = { PLANET_CLASS = pc_hajungle } }
+				pc_mushroom = { change_starting_planet_class_normal = { PLANET_CLASS = pc_mushroom } }
+				pc_retinal = { change_starting_planet_class_normal = { PLANET_CLASS = pc_retinal } }
+				pc_forest = { change_starting_planet_class_normal = { PLANET_CLASS = pc_forest } }
+				pc_med = { change_starting_planet_class_normal = { PLANET_CLASS = pc_med } }
+				pc_primal = { change_starting_planet_class_normal = { PLANET_CLASS = pc_primal } }
+				pc_karst = { change_starting_planet_class_normal = { PLANET_CLASS = pc_karst } }
+				pc_superhabitable = { change_starting_planet_class_normal = { PLANET_CLASS = pc_superhabitable } }
+				pc_tidallylocked = { change_starting_planet_class_normal = { PLANET_CLASS = pc_tidallylocked } }
+				pc_geothermal = { change_starting_planet_class_normal = { PLANET_CLASS = pc_geothermal } }
+				pc_biolumen = { change_starting_planet_class_normal = { PLANET_CLASS = pc_biolumen } }
+				pc_med = { change_starting_planet_class_normal = { PLANET_CLASS = pc_med } }
+				
+				#Compatible with Nanite Machines & Distant Stars Overhaul.
+				pc_nanite_forgeworld = { change_starting_planet_class_special = { PLANET_CLASS = pc_nanite_forgeworld } }
+			}
+		}
+		if = {
+			limit = { is_gestalt = yes }
+			event_target:isolated_home_system_init_04 = {
+				create_starbase = {
+					size = "starbase_starport"
+					module = "shipyard"
+					module = "solar_panel_network"
+					building = "crew_quarters"
+					owner = root
+				}
+			}
+		}
+		else = {
+			event_target:isolated_home_system_init_04 = {
+				create_starbase = {
+					size = "starbase_starport"
+					module = "shipyard"
+					module = "trading_hub"
+					building = "crew_quarters"
+					owner = root
+				}
+			}
+		}
+		event_target:previous_home_planet = {
+			every_owned_pop = {
+				resettle_pop = {
+					pop = this
+					planet = event_target:new_home_planet
+				}
+				unemploy_pop = yes
+			}
+		}
+		event_target:isolated_home_system_init_04 = {
+			set_name = event_target:previous_home_system
+			random_system_planet = {
+				limit = {
+					is_star = yes
+				}
+				set_name = event_target:previous_home_system
+				save_event_target_as = new_home_system_loc
+			}
+			random_system_planet = {
+				limit = {
+					has_planet_flag = isolated_home_planet
+				}
+				set_name = event_target:previous_home_planet
+				set_owner = root
+				set_controller = root
+				set_capital = yes
+				solar_system = {
+					generate_home_system_resources = yes
+				}
+				if = {
+					limit = { 
+						event_target:previous_home_planet = {
+							has_planet_flag = planet_earth
+							NOR = { 
+								root = { has_origin = origin_shattered_ring }
+								root = { has_origin = origin_remnants }
+							}
+						}
+					}
+					generate_earth_deposits_and_blockers = yes
+				}
+				else_if = {
+					limit = {
+						event_target:previous_home_planet = {
+							OR = {
+								NOT = { has_planet_flag = planet_earth }
+								root = { has_origin = origin_remnants }
+							}
+							NOT = { 
+								root = { has_origin = origin_shattered_ring }
+							}
+						}
+					}
+					generate_start_deposits_and_blockers = yes
+				}
+				generate_start_buildings_and_districts = yes
+				root = {
+					random_owned_leader = {
+						limit = {
+							leader_class = governor
+						}
+						unassign_leader = yes
+						save_event_target_as = target_governor
+					}
+				}
+				sector = {
+					assign_leader = event_target:target_governor
+				}
+			}
+		}
+		capital_scope = { 
+			save_event_target_as = new_home_planet 
+			system_star = { set_deposit = d_energy_10 }
+		}
+		event_target:previous_home_planet = {
+			solar_system = {
+				every_fleet_in_system = {
+					if = {
+						limit = {
+							exists = leader
+						}
+						leader = {
+							unassign_leader = this
+						}
+					}
+					delete_fleet = { target = this destroy_template = yes kill_leader = no }
+				}
+				set_name = random
+				random_system_planet = {
+					limit = { is_star = yes }
+					set_name = solar_system
+				}
+			}
+			remove_planet = yes
+		}
+		every_owned_pop_species = {
+			set_species_homeworld = event_target:new_home_planet
+		}
+		event_target:isolated_home_system_init_04 = {
+			random_system_planet = {
+				limit = {
+					has_planet_flag = isolated_home_planet
+				}
+				if = {
+					limit = {
+						owner = {
+							has_origin = origin_tree_of_life
+						}
+					}
+					owner = {
+						capital_scope = {
+							add_deposit = d_tree_of_life_home
+						}
+					}
+				}
+				if = {
+					limit = {
+						owner = {
+							has_origin = origin_lithoid
+						}
+					}
+					owner = {
+						capital_scope = {
+							add_deposit = d_lithoid_crater
+							add_deposit = d_buried_lithoids
+							add_deposit = d_buried_lithoids
+							add_deposit = d_buried_lithoids
+							add_deposit = d_buried_lithoids
+							add_modifier = { modifier = lithoid_crater }
+						}
+					}
+				}
+				if = {
+					limit = {
+						owner = {
+							has_origin = origin_lost_colony
+						}
+					}
+					owner = {
+						capital_scope = {
+							add_modifier = { modifier = colonial_spirit_mod }
+						}
+					}
+				}
+				if = {
+					limit = {
+						owner = {
+							has_origin = origin_default
+						}
+					}
+					owner = {
+						capital_scope = {
+							add_modifier = { modifier = prosp_uni_mod }
+						}
+					}
+				}
+				if = {
+					limit = {
+						owner = {
+							has_origin = origin_machine
+						}
+					}
+					owner = {
+						capital_scope = {
+							add_deposit = d_machine_minerals
+							solar_system = {
+								every_system_planet = {
+									limit = {
+										colonizable_planet = no
+										is_star = no
+									}
+									clear_deposits = yes
+								}
+								every_system_planet = {
+									limit = {
+										is_asteroid = yes
+									}
+									remove_planet = yes
+								}
+								every_system_planet = {
+									limit = {
+										colonizable_planet = no
+										is_star = no
+										is_asteroid = no
+										NOT = { is_planet_class = pc_gas_giant }
+									}
+									change_pc = pc_broken
+								}
+								every_system_planet = {
+									limit = {
+										colonizable_planet = no
+										is_star = no
+										is_planet_class = pc_gas_giant
+									}
+									change_pc = pc_molten
+									change_planet_size = -25
+									add_modifier = { modifier = chthonian_planet }
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		create_fleet = {
+			effect = {
+				set_owner = root
+				create_ship = {
+					name = random
+					random_existing_design = science
+				}
+				set_fleet_stance = evasive
+				set_location = root.capital_scope.star
+				owner = {
+					random_owned_leader = {
+						limit = {
+							leader_class = scientist
+							NOR = {
+								is_researching_area = physics
+								is_researching_area = society
+								is_researching_area = engineering
+							}
+						}
+						save_event_target_as = ag_science_ship_leader
+					}
+				}
+				if = {
+					limit = {
+						exists = event_target:ag_science_ship_leader
+					}
+					set_leader = event_target:ag_science_ship_leader
+				}
+			}
+		}
+		create_fleet = {
+			effect = {
+				set_owner = root
+				create_ship = {
+					name = random
+					random_existing_design = constructor
+				}
+				set_fleet_stance = evasive
+				set_location = root.capital_star
+			}
+		}
+		create_fleet = {
+			set_take_point = yes
+			effect = {
+				set_owner = root
+				while = {
+					count = 3
+					create_ship = {
+						name = random
+						random_existing_design = corvette
+					}
+				}
+				set_location = root.capital_star
+			}
+		}
+		country_event = { id = iso_init.2 days = 1 }
+		if = {
+			limit = { has_origin = origin_here_be_dragons }
+			country_event = { id = aquatics.100 }
+		}
+	}
+
+}
+
+
+country_event = {
+	id = iso_init.12
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_origin = origin_shattered_ring_isolated
+		any_system_within_border = { has_star_flag = isolated_home_system_gate }
+	}
+
+	immediate = {
+		random_system = {
+			limit = { has_star_flag = isolated_home_system_gate }
+			creating_starting_system_ringworld_origin = yes
+		}
+		set_country_flag = isolated_starting_country
+		random_owned_planet = {
+			save_event_target_as = previous_home_planet
+			solar_system = {
+				save_event_target_as = previous_home_system
+				switch = {
+					trigger = has_star_flag
+					isolated_home_system_init_style_1_flaged = { root = { set_country_flag = isolated_home_system_init_style_1 } }
+					isolated_home_system_init_style_2_flaged = { root = { set_country_flag = isolated_home_system_init_style_2 } }
+					isolated_home_system_init_style_3_flaged = { root = { set_country_flag = isolated_home_system_init_style_3 } }
+					isolated_home_system_init_style_4_flaged = { root = { set_country_flag = isolated_home_system_init_style_4 } }
+					isolated_home_system_init_style_5_flaged = { root = { set_country_flag = isolated_home_system_init_style_5 } }
+					isolated_home_system_init_style_6_flaged = { root = { set_country_flag = isolated_home_system_init_style_6 } }
+				}
+			}
+		}
+		random_system = {
+			limit = {
+				iso_init_same_flag_system = yes
+				any_system_planet = {
+					has_planet_flag = first_colony_candidate
+				}
+			}
+			random_system_planet = {
+				limit = {
+					has_planet_flag = first_colony_candidate
+				}
+				remove_planet_flag = first_colony_candidate
+				set_planet_flag = isolated_home_colony_1
+			}
+		}
+		random_system = {
+			limit = {
+				iso_init_same_flag_system = yes
+				any_system_planet = {
+					has_planet_flag = second_colony_candidate
+				}
+			}
+			random_system_planet = {
+				limit = {
+					has_planet_flag = second_colony_candidate
+				}
+				remove_planet_flag = second_colony_candidate
+				set_planet_flag = isolated_home_colony_2
+			}
+		}
+		random_system = {
+			limit = {
+				iso_init_same_flag_system = yes
+				any_system_planet = {
+					has_planet_flag = first_colony_candidate
+				}
+			}
+			random_system_planet = {
+				limit = {
+					has_planet_flag = first_colony_candidate
+				}
+				remove_planet_flag = first_colony_candidate
+				random_list = {
+					50 = {
+						change_pc = pc_barren
+					}
+					50 = {
+						change_pc = pc_barren_cold
+					}
+				}
+				add_modifier = {
+					modifier = "terraforming_candidate"
+					days = -1
+				}
+			}
+		}
+		random_system = {
+			limit = {
+				iso_init_same_flag_system = yes
+				any_system_planet = {
+					has_planet_flag = second_colony_candidate
+				}
+			}
+			random_system_planet = {
+				limit = {
+					has_planet_flag = second_colony_candidate
+				}
+				remove_planet_flag = second_colony_candidate
+				random_list = {
+					50 = {
+						change_pc = pc_barren
+					}
+					50 = {
+						change_pc = pc_barren_cold
+					}
+				}
+				add_modifier = {
+					modifier = "terraforming_candidate"
+					days = -1
+				}
+			}
+		}
+		random_system = {
+			limit = {
+				iso_init_same_flag_system = yes
+				has_star_flag = isolated_home_system_init_01
+			}
+			save_event_target_as = isolated_home_system_init_01
+		}
+		random_system = {
+			limit = {
+				iso_init_same_flag_system = yes
+				has_star_flag = isolated_home_system_init_02
+			}
+			save_event_target_as = isolated_home_system_init_02
+		}
+		random_system = {
+			limit = {
+				iso_init_same_flag_system = yes
+				has_star_flag = isolated_home_system_init_03
+			}
+			save_event_target_as = isolated_home_system_init_03
+		}
+		random_system = {
+			limit = {
+				iso_init_same_flag_system = yes
+				has_star_flag = isolated_home_system_init_04
+			}
+			save_event_target_as = isolated_home_system_init_04
+		}
+		random_system = {
+			limit = {
+				iso_init_same_flag_system = yes
+				has_star_flag = isolated_home_system_init_05
+			}
+			save_event_target_as = isolated_home_system_init_05
+		}
+		random_system = {
+			limit = {
+				iso_init_same_flag_system = yes
+				has_star_flag = isolated_home_system_init_06
+			}
+			save_event_target_as = isolated_home_system_init_06
+		}
+		random_system = {
+			limit = {
+				iso_init_same_flag_system = yes
+				has_star_flag = isolated_home_system_init_07
+			}
+			save_event_target_as = isolated_home_system_init_07
+		}
+		random_system = {
+			limit = {
+				iso_init_same_flag_system = yes
+				has_star_flag = isolated_home_system_init_08
+			}
+			save_event_target_as = isolated_home_system_init_08
+		}
+		random_system = {
+			limit = {
+				iso_init_same_flag_system = yes
+				has_star_flag = isolated_home_system_init_09
+			}
+			save_event_target_as = isolated_home_system_init_09
+		}
+		owner_species = {
+			switch = {
+				trigger = has_trait
+				
+				#You could add more planets here.
+				#"change_starting_planet_class_normal" will create guaranteed colonies base on planet class of your species preference.
+				#trait_<planet class>_preference = { change_starting_planet_class_normal = { PLANET_CLASS = <planet class> } }
+				trait_pc_desert_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_desert } }
+				trait_pc_arid_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_arid } }
+				trait_pc_savannah_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_savannah } }
+				trait_pc_ocean_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_ocean } }
+				trait_pc_continental_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_continental } }
+				trait_pc_tropical_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_tropical } }
+				trait_pc_tundra_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_tundra } }
+				trait_pc_arctic_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_arctic } }
+				trait_pc_alpine_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_alpine } }
+				
+				#Compatible with Planetary Diversity.
+				trait_pc_aquatic_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_aquatic } }
+				trait_pc_prairie_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_prairie } }
+				trait_pc_antarctic_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_antarctic } }
+				trait_pc_snow_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_snow } }
+				trait_pc_glacial_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_glacial } }
+				trait_pc_frozen_desert_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_frozen_desert } }
+				trait_pc_steppe_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_steppe } }
+				trait_pc_hadesert_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_hadesert } }
+				trait_pc_boreal_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_boreal } }
+				trait_pc_sandsea_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_sandsea } }
+				trait_pc_subarctic_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_subarctic } }
+				trait_pc_cascadian_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_cascadian } }
+				trait_pc_swamp_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_swamp } }
+				trait_pc_mangrove_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_mangrove } }
+				trait_pc_desertislands_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_desertislands } }
+				trait_pc_mesa_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_mesa } }
+				trait_pc_oasis_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_oasis } }
+				trait_pc_hajungle_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_hajungle } }
+				trait_pc_mushroom_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_mushroom } }
+				trait_pc_retinal_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_retinal } }
+				trait_pc_forest_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_forest } }
+				trait_pc_med_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_med } }
+				trait_pc_primal_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_primal } }
+				trait_pc_karst_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_karst } }
+				trait_pc_superhabitable_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_superhabitable } }
+				trait_pc_tidallylocked_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_tidallylocked } }
+				trait_pc_geothermal_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_geothermal } }
+				trait_pc_biolumen_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_biolumen } }
+				trait_pc_med_preference = { change_starting_planet_class_normal = { PLANET_CLASS = pc_med } }
+			}
+		}
+		if = {
+			limit = {
+				is_gestalt = yes
+			}
+			event_target:isolated_home_system_init_04 = {
+				create_starbase = {
+					size = "starbase_starport"
+					module = "shipyard"
+					module = "solar_panel_network"
+					building = "crew_quarters"
+					owner = root
+				}
+			}
+		}
+		else = {
+			event_target:isolated_home_system_init_04 = {
+				create_starbase = {
+					size = "starbase_starport"
+					module = "shipyard"
+					module = "trading_hub"
+					building = "crew_quarters"
+					owner = root
+				}
+			}
+		}
+		event_target:isolated_home_system_init_04 = {
+			set_name = event_target:previous_home_system
+			random_system_planet = {
+				limit = {
+					is_star = yes
+				}
+				set_name = event_target:previous_home_system
+				save_event_target_as = new_home_system_loc
+			}
+			random_system_planet = {
+				limit = {
+					has_planet_flag = isolated_home_planet
+				}
+				set_name = event_target:previous_home_planet
+				set_owner = root
+				set_controller = root
+				set_capital = yes
+				solar_system = {
+					root = {
+						every_planet_within_border = {
+							limit = {
+								has_deposit_for = shipclass_mining_station
+								has_planet_flag = starting_mining_target
+								has_mining_station = no
+							}
+							create_mining_station = { owner = root }
+						}
+						every_planet_within_border = {
+							limit = {
+								has_deposit_for = shipclass_research_station
+								has_planet_flag = starting_research_target
+								has_research_station = no
+							}
+							create_mining_station = { owner = root }
+						}
+					}
+				}
+				add_district = district_rw_farming
+				add_deposit = d_arcane_generator
+				add_deposit = d_decrepit_tunnels_1
+				add_deposit = d_decrepit_tunnels_2
+				add_deposit = d_decrepit_tunnels_3
+				if = {
+					limit = {
+						owner = {
+							is_lithoid_empire = yes
+							NOT = { has_civic = civic_hive_devouring_swarm }
+						}
+					}
+					while = {
+						count = 4
+						add_deposit = d_hibernating_lithoids
+					}
+				}
+				if = {
+					limit = {
+						owner = {
+							is_lithoid_empire = yes
+							has_civic = civic_hive_devouring_swarm
+						}
+					}
+					while = {
+						count = 2
+						add_deposit = d_hibernating_lithoids
+					}
+				}
+				if = {
+					limit = {
+						owner = {
+							is_lithoid_empire = yes
+							is_hive_empire = yes
+						}
+					}
+					remove_district = district_rw_farming
+					add_district = district_rw_generator
+				}
+				if = {
+					limit = { owner = { is_regular_empire = yes } }
+					add_building = building_capital
+					add_building = building_bureaucratic_1
+					add_building = building_research_lab_1
+					add_building = building_foundry_1
+					add_building = building_factory_1
+					if = {
+						limit = { owner = { is_megacorp = yes } }
+						add_building = building_commercial_zone
+					}
+				}
+				if = {
+					limit = { owner = { is_hive_empire = yes } }
+					add_building = building_hive_capital
+					add_building = building_hive_node
+					add_building = building_research_lab_1
+					add_building = building_foundry_1
+					add_building = building_spawning_pool
+					add_building = building_hive_warren
+				}
+				if = {
+					limit = { owner = { is_machine_empire = yes } }
+					remove_district = district_rw_farming
+					add_district = district_rw_generator
+					add_building = building_machine_capital
+					add_building = building_machine_assembly_plant
+					add_building = building_uplink_node
+					add_building = building_research_lab_1
+					add_building = building_foundry_1
+					if = {
+						limit = { owner = { has_civic = civic_machine_assimilator } }
+						add_district = district_rw_farming
+						add_deposit = d_segment_rubble_1
+						add_deposit = d_segment_rubble_1
+						add_deposit = d_segment_rubble_2
+						add_deposit = d_segment_rubble_2
+					}
+					if = {
+						limit = { owner = { has_civic = civic_machine_servitor } }
+						add_building = building_organic_sanctuary
+						add_district = district_rw_farming
+						add_deposit = d_segment_rubble_1
+						add_deposit = d_segment_rubble_1
+						add_deposit = d_segment_rubble_2
+						add_deposit = d_segment_rubble_2
+					}
+				}
+				owner = {
+					if = {
+						limit = {
+							has_authority = auth_machine_intelligence
+						}
+						if = {
+							limit = {
+								OR = {
+									has_valid_civic = civic_machine_servitor
+									has_valid_civic = civic_machine_assimilator
+								}
+							}
+							if = {
+								limit = { has_country_flag = lithoid_subspecies }
+								add_resource = { minerals = 100	}
+								add_resource = { energy = 100 }
+							}
+							else = {
+								add_resource = { food = 100	}
+								add_resource = { energy = 100 }
+							}
+						}
+						else = {
+							add_resource = { energy = 200 }
+						}
+					}
+					else = {
+						if = {
+							limit = { is_lithoid_empire = no }
+							if = {
+								limit = { has_country_flag = lithoid_subspecies }
+								add_resource = { food = 100	}
+								add_resource = { minerals = 100 }
+							}
+							else = {
+								add_resource = { food = 200 }
+							}
+						}
+						else = {
+							if = {
+								limit = { has_country_flag = non_lithoid_subspecies }
+								add_resource = { food = 100	}
+								add_resource = { minerals = 100 }
+							}
+							else = {
+								add_resource = { minerals = 200 }
+							}
+						}
+					}
+				}
+				root = {
+					random_owned_leader = {
+						limit = {
+							leader_class = governor
+						}
+						unassign_leader = yes
+						save_event_target_as = target_governor
+					}
+				}
+				sector = {
+					assign_leader = event_target:target_governor
+				}
+			}
+		}
+		create_fleet = {
+			effect = {
+				set_owner = root
+				create_ship = {
+					name = random
+					random_existing_design = science
+				}
+				set_fleet_stance = evasive
+				set_location = root.capital_scope.star
+				owner = {
+					random_owned_leader = {
+						limit = {
+							leader_class = scientist
+							NOR = {
+								is_researching_area = physics
+								is_researching_area = society
+								is_researching_area = engineering
+							}
+						}
+						save_event_target_as = ag_science_ship_leader
+					}
+				}
+				if = {
+					limit = {
+						exists = event_target:ag_science_ship_leader
+					}
+					set_leader = event_target:ag_science_ship_leader
+				}
+			}
+		}
+		create_fleet = {
+			effect = {
+				set_owner = root
+				create_ship = {
+					name = random
+					random_existing_design = constructor
+				}
+				set_fleet_stance = evasive
+				set_location = root.capital_star
+			}
+		}
+		create_fleet = {
+			set_take_point = yes
+			effect = {
+				set_owner = root
+				while = {
+					count = 3
+					create_ship = {
+						name = random
+						random_existing_design = corvette
+					}
+				}
+				set_location = root.capital_star
+			}
+		}
+		capital_scope = { 
+			save_event_target_as = new_home_planet 
+			system_star = { set_deposit = d_energy_10 }
+		}
+		event_target:previous_home_planet = {
+			solar_system = {
+				every_fleet_in_system = {
+					if = {
+						limit = {
+							exists = leader
+						}
+						leader = {
+							unassign_leader = this
+						}
+					}
+					delete_fleet = { target = this destroy_template = yes kill_leader = no }
+				}
+				set_name = random
+				random_system_planet = {
+					limit = { is_star = yes }
+					set_name = solar_system
+				}
+			}
+			if = {
+				limit = {
+					root = {
+						is_machine_empire = no
+					}
+				}
+				every_owned_pop = {
+					resettle_pop = {
+						pop = this
+						planet = event_target:new_home_planet
+					}
+					unemploy_pop = yes
+				}
+				remove_planet = yes
+			}
+		}
+		every_owned_pop_species = {
+			set_species_homeworld = event_target:new_home_planet
+		}
+		country_event = { id = iso_init.2 days = 1 }
+	}
+}
+
+
+
+#Triggered 1 day after game started.
+country_event = {
+	id = iso_init.2
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = {
+				exists = event_target:previous_home_planet
+				event_target:previous_home_planet = {
+					num_pops > 0
+				}
+			}
+			random_galaxy_planet = {
+				limit = { has_planet_flag = isolated_home_planet }
+				save_event_target_as = new_home_planet
+				set_owner = root
+				set_controller = root
+				set_capital = yes
+			}
+			event_target:previous_home_planet = {
+				every_owned_pop = {
+					resettle_pop = {
+						pop = this
+						planet = event_target:new_home_planet
+					}
+				}
+				remove_planet = yes
+			}
+		}
+		capital_scope = {
+			every_owned_pop = {
+				unemploy_pop = yes
+			}
+		}
+		every_planet_within_border = {
+			limit = {
+				has_deposit_for = shipclass_mining_station
+				has_planet_flag = starting_mining_target
+				has_mining_station = no
+			}
+			create_mining_station = { owner = root }
+		}
+		every_planet_within_border = {
+			limit = {
+				has_deposit_for = shipclass_research_station
+				has_planet_flag = starting_research_target
+				has_research_station = no
+			}
+			create_research_station = { owner = root }
+		}
+		every_system = {
+			limit = {
+				has_star_flag = isolated_home_system
+			}
+			#To prevent advanced AI control cluster systems if there are too many AI.
+			if = {
+				limit = {
+					exists = space_owner
+					space_owner = {
+						NOT = { has_country_flag = isolated_starting_country }
+					}
+				}
+				every_fleet_in_system = {
+					delete_fleet = this
+				}
+				every_system_planet = {
+					limit = {
+						is_colony = yes
+					}
+					every_owned_pop = {
+						kill_pop = yes
+					}
+					remove_all_buildings = yes
+					remove_all_districts = yes
+					destroy_colony = yes
+				}
+			}
+			#Remove hyperlane created by other mods.
+			every_system = {
+				limit = {
+					has_hyperlane_to = prev
+					NOT = { has_star_flag = isolated_home_system }
+				}
+				remove_hyperlane = { from = this to = prev }
+			}
+		}
+
+		#Origins.
+		if = {
+			limit = { has_origin = origin_scion }
+			country_event = { id = origin.5 }
+		}
+		#Common Ground/Hegemon setup here to prevent bugs.
+		if = {
+			limit = { 
+				OR = {
+					has_origin = origin_common_ground
+					has_origin = origin_hegemon
+				}
+			}
+			every_country = {
+				limit = {
+					NOT = { is_same_value = root }
+					is_country_type = default
+					has_communications = root
+				}
+				every_owned_planet = {
+					every_owned_pop = {
+						kill_pop = yes
+					}
+					remove_all_buildings = yes
+					remove_all_districts = yes
+					destroy_colony = yes
+				}
+				every_owned_fleet = { delete_fleet = this }
+				destroy_country = yes
+			}
+			country_event = { id = origin.55 days = 1 }
+		}
+		if = {
+			limit = { has_origin = origin_doomsday }
+			country_event = { id = origin.60 }
+		}
+		if = {
+			limit = { has_origin = origin_galactic_doorstep }
+			country_event = { id = origin.1001 }
+		}
+		if = {
+			limit = { has_origin = origin_shoulders_of_giants }
+			country_event = { id = origin.1199 }
+		}
+				
+		#Compatible with Nanite Machines & Distant Stars Overhaul.
+		iso_compatibility_effect = yes
+	}
+}

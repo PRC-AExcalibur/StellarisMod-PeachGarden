@@ -1,0 +1,16 @@
+objectTypes = {
+
+	pdxparticle = {
+		name = "ag_ancient_gate_portal_effect"
+		type = "ag_ancient_gate_portal_effect"
+		
+		scale = 1.0
+	}
+	pdxparticle = {
+		name = "ag_ancient_gate_portal_death_residue_effect"
+		type = "ag_ancient_gate_portal_death_residue_effect"
+		
+		scale = 1.0
+	}
+	
+}

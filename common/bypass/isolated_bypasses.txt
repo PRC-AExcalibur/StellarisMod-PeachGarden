@@ -1,0 +1,44 @@
+
+ag_ancient_gate = {
+	name = ag_ancient_gate
+	is_pathfind = yes
+	uses_action = no
+	always_active = yes
+	windup_time = 2
+	winddown_time = 5
+	ftl_multiplier = 1
+	icon_frame = 30
+	remember_instances = no
+	galactic_map_tooltip_header = ag_ancient_gate
+	galactic_map_tooltip_desc = ag_ancient_gate_desc
+	connection_type = any_other
+	animation_time = 1
+	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
+	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
+}
+ag_ancient_gate_alt = {
+	name = ag_ancient_gate
+	is_pathfind = yes
+	uses_action = no
+	always_active = yes
+	windup_time = 2
+	winddown_time = 5
+	ftl_multiplier = 1
+	icon_frame = 30
+	remember_instances = no
+	galactic_map_tooltip_header = ag_ancient_gate
+	galactic_map_tooltip_desc = ag_ancient_gate_desc
+	connection_type = scripted_connection
+	animation_time = 1
+	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
+	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
+
+	scripted_connection = {
+		node = {
+			NOT = { has_star_flag = isolated_home_system }
+		}
+		nexus = {
+			has_star_flag = isolated_home_system
+		}
+	}
+}

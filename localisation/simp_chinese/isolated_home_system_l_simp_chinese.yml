@@ -1,0 +1,26 @@
+﻿l_simp_chinese:
+
+ isolated_home_system_initializer_NAME:0 "桃花源星团"
+ isolated_home_system_initializer_ringworld_NAME:0 "$isolated_home_system_initializer_NAME$"
+ isolated_home_system_initializer_habitat_NAME:0 "$isolated_home_system_initializer_NAME$"
+ isolated_home_system_initializer_DESC:0 "一个星系外的星团，只能通过桃花源星门抵达。\n\n$system_initializer_DESC$"
+ isolated_home_system_initializer_ringworld_DESC:0 "这是桃花源的默认初始星系。\n\n$isolated_home_system_initializer_DESC$"
+ 
+ origin_shattered_ring_isolated_effect:0"出生于一个孤立的桃花源星团内部。\n$origin_tooltip_shattered_ring_effects$"
+ 
+ ag_ancient_gate:0 "R门有小口!"
+ ag_ancient_gate_desc:0 "这个星系内有一座§R$ag_ancient_gate$§!"
+
+ ag_ancient_gate_alt:0 "R门有小口!"
+ ag_ancient_gate_alt_desc:0 "这个星系内有一座§R$ag_ancient_gate$§!"
+ 
+ ag_ancient_gate_base:0 "R门有小口!"
+ ag_ancient_gate_base_DESC:0 "一种连接着星系边缘世外桃源的特殊星门。"
+ ag_ancient_gate_base_MEGASTRUCTURE_DETAILS:0 ""
+ 
+ ag_ancient_gate_base_alt:0 "R门有小口!"
+ ag_ancient_gate_base_alt_DESC:0 "一种连接着星系边缘世外桃源的特殊星门。"
+ ag_ancient_gate_base_alt_MEGASTRUCTURE_DETAILS:0 ""
+ 
+ origin_shattered_ring_isolated:0 "世外桃源"
+ origin_shattered_ring_isolated_desc:0 "二二元中，地联人摸鱼为业。缘星行，忘路之远近。忽逢桃星云，夹光数百步，中无杂星，矿物鲜美，合金缤纷，学者甚异之。复前行，欲穷其云。云尽光源，便得一门，门有小口，仿佛若有光。"

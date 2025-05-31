@@ -662,7 +662,7 @@ isolated_home_system_init_04_ringworld = {
 		class = "pc_relic"
 		orbit_distance = 20
 		orbit_angle = 0
-		size = 60
+		size = 50
 		has_ring = no
 
 		flags = { ignore_startup_effect }
@@ -1027,7 +1027,7 @@ isolated_home_system_init_07 = {
 	}
 
 	planet = {
-		class = pc_relic
+		class = pc_gaia
 		orbit_distance = 30
 		orbit_angle = random
 		size = 16
@@ -1051,7 +1051,7 @@ isolated_home_system_init_07 = {
 	}
 	
 	planet = {
-		class = pc_relic
+		class = pc_gaia
 		orbit_distance = 30
 		orbit_angle = random
 		size = 24

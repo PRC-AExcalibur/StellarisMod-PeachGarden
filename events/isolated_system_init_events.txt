@@ -268,15 +268,15 @@ country_event = {
 				}
 			}
 		}
-		event_target:previous_home_planet = {
-			every_owned_pop = {
-				resettle_pop = {
-					pop = this
-					planet = event_target:new_home_planet
-				}
-				unemploy_pop = yes
-			}
-		}
+		# event_target:previous_home_planet = {
+		# 	every_owned_pop = {
+		# 		resettle_pop = {
+		# 			pop = this
+		# 			planet = event_target:new_home_planet
+		# 		}
+		# 		unemploy_pop = yes
+		# 	}
+		# }
 		event_target:isolated_home_system_init_04 = {
 			set_name = event_target:previous_home_system
 			random_system_planet = {
@@ -286,86 +286,35 @@ country_event = {
 				set_name = event_target:previous_home_system
 				save_event_target_as = new_home_system_loc
 			}
-			random_system_planet = {
-				limit = {
-					has_planet_flag = isolated_home_planet
-				}
-				set_name = event_target:previous_home_planet
-				set_owner = root
-				set_controller = root
-				set_capital = yes
-				solar_system = {
-					generate_home_system_resources = yes
-				}
-				if = {
-					limit = { 
-						event_target:previous_home_planet = {
-							has_planet_flag = planet_earth
-							NOR = { 
-								root = { has_origin = origin_shattered_ring }
-								root = { has_origin = origin_remnants }
-							}
-						}
-					}
-					generate_earth_deposits_and_blockers = yes
-				}
-				else_if = {
-					limit = {
-						event_target:previous_home_planet = {
-							OR = {
-								NOT = { has_planet_flag = planet_earth }
-								root = { has_origin = origin_remnants }
-							}
-							NOT = { 
-								root = { has_origin = origin_shattered_ring }
-							}
-						}
-					}
-					generate_start_deposits_and_blockers = yes
-				}
-				generate_start_buildings_and_districts = yes
-				root = {
-					random_owned_leader = {
-						limit = {
-							leader_class = governor
-						}
-						unassign_leader = yes
-						save_event_target_as = target_governor
-					}
-				}
-				sector = {
-					assign_leader = event_target:target_governor
-				}
-			}
 		}
 		capital_scope = { 
 			save_event_target_as = new_home_planet 
 			system_star = { set_deposit = d_energy_10 }
 		}
-		event_target:previous_home_planet = {
-			solar_system = {
-				every_fleet_in_system = {
-					if = {
-						limit = {
-							exists = leader
-						}
-						leader = {
-							unassign_leader = this
-						}
-					}
-					delete_fleet = { target = this destroy_template = yes kill_leader = no }
-				}
-				set_name = random
-				random_system_planet = {
-					limit = { is_star = yes }
-					set_name = solar_system
-				}
-			}
-			remove_planet = yes
-		}
-		every_owned_pop_species = {
-			set_species_homeworld = event_target:new_home_planet
-		}
+		# event_target:previous_home_planet = {
+		# 	solar_system = {
+		# 		every_fleet_in_system = {
+		# 			if = {
+		# 				limit = {
+		# 					exists = leader
+		# 				}
+		# 				leader = {
+		# 					unassign_leader = this
+		# 				}
+		# 			}
+		# 			delete_fleet = { target = this destroy_template = yes kill_leader = no }
+		# 		}
+		# 		set_name = random
+		# 		random_system_planet = {
+		# 			limit = { is_star = yes }
+		# 			set_name = solar_system
+		# 		}
+		# 	}
+		# 	remove_planet = yes
+		# }
+		# every_owned_pop_species = {
+		# 	set_species_homeworld = event_target:new_home_planet
+		# }
 		event_target:isolated_home_system_init_04 = {
 			random_system_planet = {
 				limit = {
@@ -796,184 +745,6 @@ country_event = {
 				set_name = event_target:previous_home_system
 				save_event_target_as = new_home_system_loc
 			}
-			random_system_planet = {
-				limit = {
-					has_planet_flag = isolated_home_planet
-				}
-				set_name = event_target:previous_home_planet
-				set_owner = root
-				set_controller = root
-				set_capital = yes
-				solar_system = {
-					root = {
-						every_planet_within_border = {
-							limit = {
-								has_deposit_for = shipclass_mining_station
-								has_planet_flag = starting_mining_target
-								has_mining_station = no
-							}
-							create_mining_station = { owner = root }
-						}
-						every_planet_within_border = {
-							limit = {
-								has_deposit_for = shipclass_research_station
-								has_planet_flag = starting_research_target
-								has_research_station = no
-							}
-							create_mining_station = { owner = root }
-						}
-					}
-				}
-				add_district = district_rw_farming
-				add_deposit = d_arcane_generator
-				add_deposit = d_decrepit_tunnels_1
-				add_deposit = d_decrepit_tunnels_2
-				add_deposit = d_decrepit_tunnels_3
-				if = {
-					limit = {
-						owner = {
-							is_lithoid_empire = yes
-							NOT = { has_civic = civic_hive_devouring_swarm }
-						}
-					}
-					while = {
-						count = 4
-						add_deposit = d_hibernating_lithoids
-					}
-				}
-				if = {
-					limit = {
-						owner = {
-							is_lithoid_empire = yes
-							has_civic = civic_hive_devouring_swarm
-						}
-					}
-					while = {
-						count = 2
-						add_deposit = d_hibernating_lithoids
-					}
-				}
-				if = {
-					limit = {
-						owner = {
-							is_lithoid_empire = yes
-							is_hive_empire = yes
-						}
-					}
-					remove_district = district_rw_farming
-					add_district = district_rw_generator
-				}
-				if = {
-					limit = { owner = { is_regular_empire = yes } }
-					add_building = building_capital
-					add_building = building_bureaucratic_1
-					add_building = building_research_lab_1
-					add_building = building_foundry_1
-					add_building = building_factory_1
-					if = {
-						limit = { owner = { is_megacorp = yes } }
-						add_building = building_commercial_zone
-					}
-				}
-				if = {
-					limit = { owner = { is_hive_empire = yes } }
-					add_building = building_hive_capital
-					add_building = building_hive_node
-					add_building = building_research_lab_1
-					add_building = building_foundry_1
-					add_building = building_spawning_pool
-					add_building = building_hive_warren
-				}
-				if = {
-					limit = { owner = { is_machine_empire = yes } }
-					remove_district = district_rw_farming
-					add_district = district_rw_generator
-					add_building = building_machine_capital
-					add_building = building_machine_assembly_plant
-					add_building = building_uplink_node
-					add_building = building_research_lab_1
-					add_building = building_foundry_1
-					if = {
-						limit = { owner = { has_civic = civic_machine_assimilator } }
-						add_district = district_rw_farming
-						add_deposit = d_segment_rubble_1
-						add_deposit = d_segment_rubble_1
-						add_deposit = d_segment_rubble_2
-						add_deposit = d_segment_rubble_2
-					}
-					if = {
-						limit = { owner = { has_civic = civic_machine_servitor } }
-						add_building = building_organic_sanctuary
-						add_district = district_rw_farming
-						add_deposit = d_segment_rubble_1
-						add_deposit = d_segment_rubble_1
-						add_deposit = d_segment_rubble_2
-						add_deposit = d_segment_rubble_2
-					}
-				}
-				owner = {
-					if = {
-						limit = {
-							has_authority = auth_machine_intelligence
-						}
-						if = {
-							limit = {
-								OR = {
-									has_valid_civic = civic_machine_servitor
-									has_valid_civic = civic_machine_assimilator
-								}
-							}
-							if = {
-								limit = { has_country_flag = lithoid_subspecies }
-								add_resource = { minerals = 100	}
-								add_resource = { energy = 100 }
-							}
-							else = {
-								add_resource = { food = 100	}
-								add_resource = { energy = 100 }
-							}
-						}
-						else = {
-							add_resource = { energy = 200 }
-						}
-					}
-					else = {
-						if = {
-							limit = { is_lithoid_empire = no }
-							if = {
-								limit = { has_country_flag = lithoid_subspecies }
-								add_resource = { food = 100	}
-								add_resource = { minerals = 100 }
-							}
-							else = {
-								add_resource = { food = 200 }
-							}
-						}
-						else = {
-							if = {
-								limit = { has_country_flag = non_lithoid_subspecies }
-								add_resource = { food = 100	}
-								add_resource = { minerals = 100 }
-							}
-							else = {
-								add_resource = { minerals = 200 }
-							}
-						}
-					}
-				}
-				root = {
-					random_owned_leader = {
-						limit = {
-							leader_class = governor
-						}
-						unassign_leader = yes
-						save_event_target_as = target_governor
-					}
-				}
-				sector = {
-					assign_leader = event_target:target_governor
-				}
-			}
 		}
 		create_fleet = {
 			effect = {
@@ -1034,44 +805,44 @@ country_event = {
 			save_event_target_as = new_home_planet 
 			system_star = { set_deposit = d_energy_10 }
 		}
-		event_target:previous_home_planet = {
-			solar_system = {
-				every_fleet_in_system = {
-					if = {
-						limit = {
-							exists = leader
-						}
-						leader = {
-							unassign_leader = this
-						}
-					}
-					delete_fleet = { target = this destroy_template = yes kill_leader = no }
-				}
-				set_name = random
-				random_system_planet = {
-					limit = { is_star = yes }
-					set_name = solar_system
-				}
-			}
-			if = {
-				limit = {
-					root = {
-						is_machine_empire = no
-					}
-				}
-				every_owned_pop = {
-					resettle_pop = {
-						pop = this
-						planet = event_target:new_home_planet
-					}
-					unemploy_pop = yes
-				}
-				remove_planet = yes
-			}
-		}
-		every_owned_pop_species = {
-			set_species_homeworld = event_target:new_home_planet
-		}
+		# event_target:previous_home_planet = {
+		# 	solar_system = {
+		# 		every_fleet_in_system = {
+		# 			if = {
+		# 				limit = {
+		# 					exists = leader
+		# 				}
+		# 				leader = {
+		# 					unassign_leader = this
+		# 				}
+		# 			}
+		# 			delete_fleet = { target = this destroy_template = yes kill_leader = no }
+		# 		}
+		# 		set_name = random
+		# 		random_system_planet = {
+		# 			limit = { is_star = yes }
+		# 			set_name = solar_system
+		# 		}
+		# 	}
+		# 	if = {
+		# 		limit = {
+		# 			root = {
+		# 				is_machine_empire = no
+		# 			}
+		# 		}
+		# 		every_owned_pop = {
+		# 			resettle_pop = {
+		# 				pop = this
+		# 				planet = event_target:new_home_planet
+		# 			}
+		# 			unemploy_pop = yes
+		# 		}
+		# 		remove_planet = yes
+		# 	}
+		# }
+		# every_owned_pop_species = {
+		# 	set_species_homeworld = event_target:new_home_planet
+		# }
 		country_event = { id = iso_init.2 days = 1 }
 	}
 }
@@ -1080,7 +851,7 @@ country_event = {
 
 #Triggered 1 day after game started.
 country_event = {
-	id = iso_init.2
+	id = iso_init.200
 	hide_window = yes
 	is_triggered_only = yes
 	

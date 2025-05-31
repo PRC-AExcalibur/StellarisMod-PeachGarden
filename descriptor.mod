@@ -1,8 +1,8 @@
-version="1.2"
+version="1.3"
 tags={
 	"Balance"
 	"Gameplay"
 }
 name="【起源】桃花源"
-supported_version="v3.14.15926"
+supported_version="v4.0.14"
 remote_file_id="3438242897"

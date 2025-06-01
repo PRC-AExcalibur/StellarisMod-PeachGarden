@@ -133,7 +133,7 @@ change_starting_planet_class_normal = {
 						}
 					}
 				}
-				change_pc = $PLANET_CLASS$
+				# change_pc = $PLANET_CLASS$
 			}
 		}
 	}
@@ -198,7 +198,7 @@ change_starting_planet_class_special = {
 						}
 					}
 				}
-				change_pc = $PLANET_CLASS$
+				# change_pc = $PLANET_CLASS$
 			}
 		}
 	}

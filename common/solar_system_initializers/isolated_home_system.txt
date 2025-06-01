@@ -22,23 +22,12 @@ isolated_home_system_initializer = {
 		size = 30
 		has_ring = no
 	}
-	
-	change_orbit = 128
-	
-	planet = {
-		count = { min = 2 max = 5 }
-		class = "pc_asteroid"
-		orbit_distance = 0
-		orbit_angle = random
-		size = 5
-		has_ring = no
-	}
-	
+
 	planet = {
 		home_planet = yes
 		
 		class = ideal_planet_class
-		orbit_distance = 35
+		orbit_distance = 100
 		orbit_angle = random
 		size = { min = 16 max = 20 }
 		has_ring = no
@@ -50,6 +39,17 @@ isolated_home_system_initializer = {
 			prevent_anomaly = yes
 			generate_empire_home_planet = yes
 		}
+	}
+
+	change_orbit = 150
+	
+	planet = {
+		count = { min = 2 max = 5 }
+		class = "pc_asteroid"
+		orbit_distance = 0
+		orbit_angle = random
+		size = 5
+		has_ring = no
 	}
 
 	init_effect = {
@@ -81,23 +81,12 @@ isolated_home_system_initializer_ringworld = {
 		size = 30
 		has_ring = no
 	}
-	
-	change_orbit = 128
-	
-	planet = {
-		count = { min = 2 max = 5 }
-		class = "pc_asteroid"
-		orbit_distance = 0
-		orbit_angle = random
-		size = 5
-		has_ring = no
-	}
-	
+
 	planet = {
 		home_planet = yes
 		
-		class = pc_ringworld_habitable
-		orbit_distance = 35
+		class = ideal_planet_class
+		orbit_distance = 100
 		orbit_angle = random
 		size = { min = 16 max = 20 }
 		has_ring = no
@@ -110,6 +99,18 @@ isolated_home_system_initializer_ringworld = {
 			generate_empire_home_planet = yes
 		}
 	}
+
+	change_orbit = 150
+	
+	planet = {
+		count = { min = 2 max = 5 }
+		class = "pc_asteroid"
+		orbit_distance = 0
+		orbit_angle = random
+		size = 5
+		has_ring = no
+	}
+	
 
 	init_effect = {
 		spawn_megastructure = {

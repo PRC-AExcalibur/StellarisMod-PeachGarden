@@ -38,45 +38,6 @@ creating_starting_system_ringworld_origin = {
 	}
 }
 
-creating_starting_system_habitat_orgin = {
-	random_list = {
-		1 = {
-			modifier = {
-				factor = 0
-				has_global_flag = isolated_cluster_style_1_spawned
-			}
-			iso_init_create_cluster_style_1 = { home_system = isolated_home_system_init_04_habitat }
-		}
-		1 = {
-			modifier = {
-				factor = 0
-				has_global_flag = isolated_cluster_style_2_spawned
-			}
-			iso_init_create_cluster_style_2 = { home_system = isolated_home_system_init_04_habitat }
-		}
-		1 = {
-			modifier = {
-				factor = 0
-				has_global_flag = isolated_cluster_style_3_spawned
-			}
-			iso_init_create_cluster_style_3 = { home_system = isolated_home_system_init_04_habitat }
-		}
-		1 = {
-			modifier = {
-				factor = 0
-				has_global_flag = isolated_cluster_style_4_spawned
-			}
-			iso_init_create_cluster_style_4 = { home_system = isolated_home_system_init_04_habitat }
-		}
-		1 = {
-			modifier = {
-				factor = 0
-				has_global_flag = isolated_cluster_style_5_spawned
-			}
-			iso_init_create_cluster_style_5 = { home_system = isolated_home_system_init_04_habitat }
-		}
-	}
-}
 
 creating_starting_system_non_origin = {
 	random_list = {
@@ -119,24 +80,6 @@ creating_starting_system_non_origin = {
 }
 
 change_starting_planet_class_normal = {
-	event_target:isolated_home_system_init_04 = {
-		random_system_planet = {
-			limit = {
-				has_planet_flag = isolated_home_planet
-			}
-			save_event_target_as = new_home_planet
-			if = {
-				limit = {
-					root = {
-						NOR = {
-							has_origin = origin_shattered_ring_isolated
-						}
-					}
-				}
-				# change_pc = $PLANET_CLASS$
-			}
-		}
-	}
 	if = {
 		limit = {
 			num_guaranteed_colonies >= 1
@@ -184,24 +127,6 @@ change_starting_planet_class_normal = {
 }
 
 change_starting_planet_class_special = {
-	event_target:isolated_home_system_init_04 = {
-		random_system_planet = {
-			limit = {
-				has_planet_flag = isolated_home_planet
-			}
-			save_event_target_as = new_home_planet
-			if = {
-				limit = {
-					root = {
-						NOR = {
-							has_origin = origin_shattered_ring_isolated
-						}
-					}
-				}
-				# change_pc = $PLANET_CLASS$
-			}
-		}
-	}
 	if = {
 		limit = {
 			num_guaranteed_colonies >= 1

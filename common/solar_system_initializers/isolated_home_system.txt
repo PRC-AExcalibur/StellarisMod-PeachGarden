@@ -456,8 +456,6 @@ isolated_home_system_init_04 = {
 		size = 17
 		has_ring = no
 		
-		flags = { isolated_home_planet }
-		
 		moon = {
 			class = "pc_barren_cold"
 			size = 5
@@ -496,13 +494,12 @@ isolated_home_system_init_04 = {
 
 	planet = {
 		name = "New Life"
-		class = "pc_relic"
+		class = "pc_gaia"
 		orbit_distance = 20
 		orbit_angle = 0
 		size = 40
 		has_ring = no
-
-		flags = { ignore_startup_effect }
+		flags = { isolated_home_planet ignore_startup_effect }
 		init_effect = {
 			prevent_anomaly = yes
 			add_deposit = d_guardian_dragon_hoard
@@ -599,8 +596,7 @@ isolated_home_system_init_04_ringworld = {
 
 		deposit_blockers = none
 		modifiers = none
-		
-		flags = { isolated_home_planet ignore_startup_effect }
+		flags = { ignore_startup_effect }
 
 		init_effect = {
 			prevent_anomaly = yes
@@ -660,13 +656,13 @@ isolated_home_system_init_04_ringworld = {
 
 	planet = {
 		name = "New Life"
-		class = "pc_relic"
+		class = "pc_gaia"
 		orbit_distance = 20
 		orbit_angle = 0
 		size = 50
 		has_ring = no
 
-		flags = { ignore_startup_effect }
+		flags = { isolated_home_planet ignore_startup_effect }
 		init_effect = {
 			prevent_anomaly = yes
 			add_deposit = d_guardian_dragon_hoard
